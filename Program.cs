@@ -26,13 +26,13 @@ public class Program
         // var desStudents = students.OrderByDescending(s => s);
         // desStudents.ToList().ForEach(c => Console.WriteLine(c));
 
-        // IList<Student> studentList = new List<Student>() { 
-        //     new Student() { StudentID = 1, StudentName = "John", Age = 18 } ,
-        //     new Student() { StudentID = 2, StudentName = "Steve",  Age = 21 } ,
-        //     new Student() { StudentID = 3, StudentName = "Bill",  Age = 18 } ,
-        //     new Student() { StudentID = 4, StudentName = "Ram" , Age = 20 } ,
-        //     new Student() { StudentID = 5, StudentName = "Abram" , Age = 21 } 
-        // };
+        IList<Student> studentList = new List<Student>() { 
+            new Student() { StudentID = 1, StudentName = "John", Age = 18 } ,
+            new Student() { StudentID = 2, StudentName = "Steve",  Age = 21 } ,
+            new Student() { StudentID = 3, StudentName = "Bill",  Age = 18 } ,
+            new Student() { StudentID = 4, StudentName = "Ram" , Age = 20 } ,
+            new Student() { StudentID = 5, StudentName = "Abram" , Age = 21 } 
+        };
 
         // var groupedResult = from s in studentList
         //                     group s by s.Age;
@@ -56,21 +56,21 @@ public class Program
         //         Console.WriteLine("Student Name: {0}", s.StudentName);
         // }
 
-        IList<Student> studentList = new List<Student>() { 
-            new Student() { StudentID = 1, StudentName = "John", StandardID =1 },
-            new Student() { StudentID = 2, StudentName = "Moin", StandardID =1 },
-            new Student() { StudentID = 3, StudentName = "Bill", StandardID =2 },
-            new Student() { StudentID = 4, StudentName = "Ram" , StandardID =2 },
-            new Student() { StudentID = 5, StudentName = "Ron"  },
-            new Student() { StudentID = 6, StudentName = "Shah"  } 
-        };
+        // IList<Student> studentList = new List<Student>() { 
+        //     new Student() { StudentID = 1, StudentName = "John", StandardID =1 },
+        //     new Student() { StudentID = 2, StudentName = "Moin", StandardID =1 },
+        //     new Student() { StudentID = 3, StudentName = "Bill", StandardID =2 },
+        //     new Student() { StudentID = 4, StudentName = "Ram" , StandardID =2 },
+        //     new Student() { StudentID = 5, StudentName = "Ron"  },
+        //     new Student() { StudentID = 6, StudentName = "Shah"  } 
+        // };
 
-        IList<Standard> standardList = new List<Standard>() { 
-            new Standard(){ StandardID = 1, StandardName="Standard 1"},
-            new Standard(){ StandardID = 2, StandardName="Standard 2"},
-            new Standard(){ StandardID = 3, StandardName="Standard 3"},
-            new Standard(){ StandardID = 4, StandardName="Standard 4"}
-        };
+        // IList<Standard> standardList = new List<Standard>() { 
+        //     new Standard(){ StandardID = 1, StandardName="Standard 1"},
+        //     new Standard(){ StandardID = 2, StandardName="Standard 2"},
+        //     new Standard(){ StandardID = 3, StandardName="Standard 3"},
+        //     new Standard(){ StandardID = 4, StandardName="Standard 4"}
+        // };
 
         // var innerJoin = studentList.Join(
         //                     standardList,
@@ -83,48 +83,51 @@ public class Program
         //                                     });
         // innerJoin.ToList().ForEach(i => Console.WriteLine($"{i.StudentName}-{i.StandardName}"));
 
-        var groupJoin = standardList.GroupJoin(studentList,
-                                standard => standard.StandardID,
-                                student => student.StandardID,
-                                (standard, studentsGroup) => new
-                                {
-                                    Students = studentsGroup,
-                                    StandardFullName = standard.StandardName
-                                });
-        var groupJoin1 = studentList.GroupJoin(standardList,
-                                student => student.StandardID,
-                                standard => standard.StandardID,
-                                (student, standarts) => new
-                                {
-                                    Student1 = student,
-                                    Standards = standarts
-                                });
+        // var groupJoin = standardList.GroupJoin(studentList,
+        //                         standard => standard.StandardID,
+        //                         student => student.StandardID,
+        //                         (standard, studentsGroup) => new
+        //                         {
+        //                             Students = studentsGroup,
+        //                             StandardFullName = standard.StandardName
+        //                         });
+        // var groupJoin1 = studentList.GroupJoin(standardList,
+        //                         student => student.StandardID,
+        //                         standard => standard.StandardID,
+        //                         (student, standarts) => new
+        //                         {
+        //                             Student1 = student,
+        //                             Standards = standarts
+        //                         });
 
-        foreach (var item in groupJoin)
-        { 
-            Console.WriteLine(item.StandardFullName);
-            foreach(var stud in item.Students)
-                Console.WriteLine(stud.StudentName);
-        }
+        // foreach (var item in groupJoin)
+        // { 
+        //     Console.WriteLine(item.StandardFullName);
+        //     foreach(var stud in item.Students)
+        //         Console.WriteLine(stud.StudentName);
+        // }
+
+        var agecheck = studentList.All(s => s.Age>20);
+        Console.WriteLine(agecheck);
         
     }
 }
 
-// public class Student
-// {
-//     public int StudentID { get; set; }
-    
-//     public string StudentName { get; set; }
-    
-//     public int Age { get; set; }
-// }
-public class Student{ 
+public class Student
+{
     public int StudentID { get; set; }
+    
     public string StudentName { get; set; }
-    public int StandardID { get; set; }
+    
+    public int Age { get; set; }
 }
+// public class Student{ 
+//     public int StudentID { get; set; }
+//     public string StudentName { get; set; }
+//     public int StandardID { get; set; }
+// }
 
-public class Standard{ 
-    public int StandardID { get; set; }
-    public string StandardName { get; set; }
-}
+// public class Standard{ 
+//     public int StandardID { get; set; }
+//     public string StandardName { get; set; }
+// }
