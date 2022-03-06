@@ -26,13 +26,13 @@ public class Program
         // var desStudents = students.OrderByDescending(s => s);
         // desStudents.ToList().ForEach(c => Console.WriteLine(c));
 
-        IList<Student> studentList = new List<Student>() { 
-            new Student() { StudentID = 1, StudentName = "John", Age = 18 } ,
-            new Student() { StudentID = 2, StudentName = "Steve",  Age = 21 } ,
-            new Student() { StudentID = 3, StudentName = "Bill",  Age = 18 } ,
-            new Student() { StudentID = 4, StudentName = "Ram" , Age = 20 } ,
-            new Student() { StudentID = 5, StudentName = "Abram" , Age = 21 } 
-        };
+        // IList<Student> studentList = new List<Student>() { 
+        //     new Student() { StudentID = 1, StudentName = "John", Age = 18 } ,
+        //     new Student() { StudentID = 2, StudentName = "Steve",  Age = 21 } ,
+        //     new Student() { StudentID = 3, StudentName = "Bill",  Age = 18 } ,
+        //     new Student() { StudentID = 4, StudentName = "Ram" , Age = 20 } ,
+        //     new Student() { StudentID = 5, StudentName = "Abram" , Age = 21 } 
+        // };
 
         // var groupedResult = from s in studentList
         //                     group s by s.Age;
@@ -107,8 +107,20 @@ public class Program
         //         Console.WriteLine(stud.StudentName);
         // }
 
-        var agecheck = studentList.All(s => s.Age>20);
-        Console.WriteLine(agecheck);
+        // var agecheck = studentList.All(s => s.Age>20);
+        // Console.WriteLine(agecheck);
+
+        // List<string> strlist = new(){"one", "two", "three", "four", "five"};
+        // string commaSep = strlist.Aggregate("Numbers: ", (s1, s2) => s1+=s2 + ",");
+        // Console.WriteLine(commaSep.Substring(0, commaSep.Length - 1));
+
+        List<int> numbers = new(){1, 2, 3, 4, 5, 6};
+        // Console.WriteLine(numbers.Max(n => n%2==1?n:0));
+        // Console.WriteLine(numbers.Average());
+        // Console.WriteLine(numbers.Count());
+        // Console.WriteLine(numbers.ElementAtOrDefault(9));
+        // Console.WriteLine(numbers.FirstOrDefault());
+        
         
     }
 }
